@@ -4,14 +4,19 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { createStore } from 'redux';
-import counter from './reducers';
+import rootReducer from './reducers';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
 // 스토어 생성
-const store = createStore(counter);
+const store = createStore(rootReducer);
+store.dispatch({
+  type: 'ADD_TODO',
+  text: 'USE REDUX'
+})
+console.log('store.getState() : ', store.getState());
 
 // 액션을 추가해서 스토어에 전달
 // 사진에서 UI안의 Deposit, Withdraw처럼
